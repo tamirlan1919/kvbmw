@@ -12,50 +12,32 @@ main_bp = Blueprint('main', __name__)
 
 # Ключи: нормализованные названия районов. Значения: ключевые слова для сопоставления.
 ALLOWED_DISTRICTS = {
-    'Хасавюртовский район': {
-        'keywords': ['хасавюрт'],
+    'Карабудахкентский район': {
+        'keywords': ['карабудахкент'],
         'localities': [
-            "абдурашид", "аджимажагатюрт", "адильотар", "акбулатюрт", "аксай",
-            "байрам", "байрамаул", "бамматюрт", "баташюрт", "батаюрт",
-            "борагангечув", "генжеаул", "гоксув", "гребенской мост", "дзержинское",
-            "кадыротар", "казмааул", "кандаураул", "карланюрт", "карланюрт",
-            "кемсиюрт", "кокрек", "костек", "куруш", "лаклакюрт",
-            "могилевское", "моксоб", "муцалаул", "новогагатли", "новосельское",
-            "новососитли", "новый костек", "нурадилово", "октябрьское", "османюрт",
-            "первомайское", "петраковское", "покровское", "пятилетка", "садовое",
-            "симсир", "сиух", "советское", "солнечное", "сулевкент",
-            "темираул", "теречное", "тотурбийкала", "тукита", "тутлар",
-            "умаротар", "умашаул", "хамавюрт", "цияб ичичали", "чагаротар",
-            "шагада", "шулькевич", "эндирей", 'хасавюрт', 'городской округ хасавюрт', 'хасавюртовский район',
-            'хасавюртовский', 'сельское поселение cело аксай', 'сельское поселение Село Аксай'
+            "карабудахкент", "аданак", "гулни", "параул", "учкент",
+            "какамахи", "манасаул", "нижнее казанище", "верхнее казанище"
         ]
     },
-    'Кизлярский район': {
-        'keywords': ['кизляр'],
+    'Левашинский район': {
+        'keywords': ['леваши'],
         'localities': [
-            "аверьяновка", "александрийская", "большая арешевка", "большебредихинское", "большезадоевское",
-            "большекозыревское", "бондареновское", "брянск", "брянский рыбозавод", "бурумбай", "виноградное",
-            "вперёд", "выше-таловка", "грузинское", "дагестанское", "дальнее", "ефимовка", "заречное", "заря коммуны", "кардоновка",
-            "кенафный завод", "керликент", "коллективизатор", "косякино", "кохановское", "крайновка", "красное",
-            "краснооктябрьское", "красный восход", "красный рыбак", "курдюковское", "лопуховка", "макаровское",
-            "малая арешевка", "малая задоевка", "малое казыревское", "мангулаул", "мирное", "михеевское", "мулла-али",
-            "некрасовка", "новая серебряковка", "нововладимирское", "новогладовка", "новое", "новокохановское", "новокрестьяновское",
-            "новомонастырское", "новонадеждовка", "ново-теречное", "новый бахтемир", "новый бирюзяк", "новый чечень",
-            "огузер", "октябрьское", "опытно-мелиоративная станция", "первокизлярское", "первомайское",
-            "персидское", "пригородное", "пролетарское", "речное", "рыбалко", "сангиши", "сар-сар", "имени жданова",
-            "имени калинина", "имени карла маркса", "имени кирова", "имени шаумяна", "серебряковка", "советское", "старо-теречное", "степное",
-            "судоремонтная техническая станция", "суюткино", "тушиловка", "украинское", "хуцеевка",
-            "цветковка", "черняевка", "школьное", "юбилейное", "южное", "ясная поляна", 'кизляр'
+            "леваши", "ашты", "какамахи", "цухта", "цудахар",
+            "муги", "хуршни", "уркарах", "куппа"
         ]
     },
-    'Бабаюртовский район': {
-        'keywords': ['бабаюрт'],
+    'Избербаш + Каякентский район': {
+        'keywords': ['избербаш', 'каякент'],
         'localities': [
-            'адиль-янгиюрт', 'алимпашаюрт', 'бабаюрт', 'геметюбе', 'герменчик', 'львовский № 1',
-            'люксембург', 'мужукай', 'новая коса', 'новокаре', 'оразгулаул', 'советское', 'тавлу-отар',
-            'тамазатюбе', 'татаюрт', 'туршунай', 'уцмиюрт', 'хамаматюрт', 'хасанай', 'чанкаюрт',
-            'шахбулатотар', 'янгылбай', 'Шава', 'Цумадинский', 'Цумадинский район', 'тамазатюбинский сельсовет', 'бабаюртовский район',
-            'Кутан Бутуш', 'кутан бутуш'
+            "избербаш", "наякент", "новокаякент", "первомайское",
+            "узнимахи", "алхаджакент", "дарваг", "джанга"
+        ]
+    },
+    'Сергокалинский район': {
+        'keywords': ['сергокала'],
+        'localities': [
+            "сергокала", "деличобан", "мулебки", "кичи-гамри",
+            "аялизимахи", "нижнее мулебки", "картас-махи"
         ]
     }
 }
@@ -66,7 +48,6 @@ def normalize_district_name(location):
     
     location = location.lower().strip()
     
-    # Удаляем префиксы и суффиксы, связанные с административным делением
     location = re.sub(
         r'(городской округ|муниципальный район|район|муниципальное образование)\s*', 
         '', 
@@ -74,11 +55,10 @@ def normalize_district_name(location):
         flags=re.IGNORECASE
     ).strip()
     
-        # Ручное сопоставление для Цумадинского района
-    if 'цумадинский' in location:
-        return 'Бабаюртовский район'  # Сопоставляем с Бабаюртовским
+    # Обработка комбинированного района
+    if 'избербаш' in location:
+        return 'Избербаш + Каякентский район'
     
-    # Проверяем ключевые слова для каждого района
     for district, data in ALLOWED_DISTRICTS.items():
         for keyword in data['keywords']:
             if keyword in location:
@@ -94,6 +74,10 @@ def is_location_allowed(location, district):
     
     # Проверяем, что населенный пункт есть в списке для района
     return location.lower() in [loc.lower() for loc in ALLOWED_DISTRICTS[normalized_district]['localities']]
+
+def is_district_allowed(district):
+    normalized_district = normalize_district_name(district)
+    return normalized_district in ALLOWED_DISTRICTS
 
 @main_bp.route('/', methods=['GET', 'POST'])
 def index():
@@ -112,23 +96,25 @@ def index():
                 flash("Ошибка проверки адреса. Попробуйте позже.", "error")
                 return render_template('index.html', form=form, is_registered=is_registered, community_link=community_link)
 
-            # Извлекаем населенный пункт и район
-            locality = extract_locality_from_address(address)
             district = address.get('county', '')
             
-            if not locality or not is_location_allowed(locality, district):
-                flash(f"Регистрация недоступна для вашего населённого пункта ({locality})!", "error")
-                logging.warning(f"Попытка регистрации из запрещённого района: {district}, населённый пункт: {locality}")
+            if not is_district_allowed(district):
+                flash(f"Регистрация недоступна для вашего района ({district})!", "error")
                 return render_template('index.html', form=form, is_registered=is_registered, community_link=community_link)
 
-            # Получаем выбранный район из формы
             selected_district = form.district.data
-            
-            # Проверяем соответствие выбранного района и геолокации
             normalized_geo = normalize_district_name(district)
-            if normalized_geo != selected_district:
-                flash("Выбранный район не соответствует вашей геолокации!", "error")
-                return render_template('index.html', form=form, is_registered=is_registered, community_link=community_link)
+            
+            # Проверка соответствия районов
+            if selected_district != normalized_geo:
+                # Специальная проверка для комбинированного района
+                if selected_district == 'Избербаш + Каякентский район':
+                    if normalized_geo not in ['Избербаш + Каякентский район', 'Каякентский район']:
+                        flash("Выбранный район не соответствует геолокации!", "error")
+                        return render_template('index.html', form=form, is_registered=is_registered, community_link=community_link)
+                else:
+                    flash("Выбранный район не соответствует геолокации!", "error")
+                    return render_template('index.html', form=form, is_registered=is_registered, community_link=community_link)
 
             # Получаем ссылку на сообщество
             community_link_obj = CommunityLink.query.filter_by(district=selected_district).first()
@@ -141,7 +127,7 @@ def index():
                 process_registration(
                     form=form,
                     district=selected_district,
-                    city=locality,
+                    city=extract_locality_from_address(address),
                     region=address.get('state', 'Дагестан'),
                     country=address.get('country', 'Россия')
                 )
@@ -157,12 +143,12 @@ def index():
     return render_template('index.html', form=form, is_registered=is_registered, community_link=community_link)
 
 def get_full_address_by_coordinates(latitude, longitude):
-    url = f'https://nominatim.openstreetmap.org/reverse?lat={43.264066}&lon={46.629507}&format=json&addressdetails=1'
+    url = f'https://nominatim.openstreetmap.org/reverse?lat={42.737729}&lon={47.342069}&format=json&addressdetails=1'
     headers = {'User-Agent': 'RaffleApp/1.0 tchinchaev@bk.ru'}
     try:
         response = requests.get(url, headers=headers)
-        return response.json()['address'] if response.status_code == 200 else None
-    except Exception as e:
+        return response.json().get('address') if response.status_code == 200 else None
+    except requests.exceptions.RequestException as e:
         logging.error(f"Ошибка запроса к Nominatim: {e}")
         return None
 

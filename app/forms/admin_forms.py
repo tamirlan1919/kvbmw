@@ -2,11 +2,12 @@ from flask_wtf import FlaskForm
 from wtforms import SelectField, StringField
 from wtforms.validators import DataRequired, URL
 
-# Копируйте ключи normalize_district_name() из main.py
+# Обновленные районы
 DISTRICT_CHOICES = [
-            ('Хасавюртовский район', 'Хасавюртовский район'),
-            ('Кизлярский район', 'Кизлярский район'),
-            ('Бабаюртовский район', 'Бабаюртовский район')
+    ('Карабудахкентский район', 'Карабудахкентский район'),
+    ('Левашинский район', 'Левашинский район'),
+    ('Избербаш + Каякентский район', 'Избербаш + Каякентский район'),
+    ('Сергокалинский район', 'Сергокалинский район')
 ]
 
 class CommunityLinkForm(FlaskForm):
