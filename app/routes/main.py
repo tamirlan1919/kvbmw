@@ -34,7 +34,7 @@ ALLOWED_DISTRICTS = {
         ]
     },
     'Сергокалинский район': {
-        'keywords': ['сергокала'],
+        'keywords': ['сергокала', 'сергокалинский'],
         'localities': [
             "сергокала", "деличобан", "мулебки", "кичи-гамри",
             "аялизимахи", "нижнее мулебки", "картас-махи"
@@ -143,7 +143,9 @@ def index():
     return render_template('index.html', form=form, is_registered=is_registered, community_link=community_link)
 
 def get_full_address_by_coordinates(latitude, longitude):
+    
     url = f'https://nominatim.openstreetmap.org/reverse?lat={latitude}&lon={longitude}&format=json&addressdetails=1'
+    print(url)
     headers = {'User-Agent': 'RaffleApp/1.0 tchinchaev@bk.ru'}
     try:
         response = requests.get(url, headers=headers)
